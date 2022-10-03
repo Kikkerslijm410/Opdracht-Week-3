@@ -53,6 +53,7 @@ namespace AsyncBoekOpdracht
             var titel = Console.ReadLine();
             Console.WriteLine("Geef de auteur op: ");
             var auteur = Console.ReadLine();
+            Console.Clear();
             Database.VoegToe(new Boek {Titel = titel, Auteur = auteur});
             Database.Logboek("Er is een nieuw boek!");
             Console.WriteLine("De huidige lijst met boeken is: ");
@@ -68,7 +69,7 @@ namespace AsyncBoekOpdracht
                 if (beste == null || boek.AIScore > beste.AIScore)
                     beste = boek;
             Console.WriteLine("Het boek dat het beste overeenkomt met de beschrijving is: ");
-            Console.WriteLine(beste.Titel);
+            Console.WriteLine(beste!.Titel);
         }
         static bool Backupping = false;
         // "Backup" kan lang duren. We willen dat de gebruiker niet hoeft te wachten,
@@ -79,17 +80,19 @@ namespace AsyncBoekOpdracht
             Backupping = true;
             await Willekeurig.Vertraging(2000, 3000);
             Backupping = false;
+            Console.WriteLine("//Backup Gemaakt");
         }
-        static async void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Welkom bij de boeken administratie!");
             string? key = null;
             while (key != "D") {
+                Console.WriteLine("Welkom bij de boeken administratie!");
                 Console.WriteLine("A) Boek toevoegen");
                 Console.WriteLine("B) Boek zoeken");
                 Console.WriteLine("C) Backup maken van de boeken");
                 Console.WriteLine("D) Quit");
                 key = Console.ReadLine();
+                Console.Clear();
                 if (key == "A")
                     await VoegBoekToe();
                 else if (key == "B")

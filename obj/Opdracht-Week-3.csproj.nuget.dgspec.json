@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\School\\Projecten\\Opdracht-Week-3\\Opdracht-Week-3.csproj": {}
+    "D:\\School\\Visual Studio Code\\Opdracht-Week-3\\Opdracht-Week-3.csproj": {}
   },
   "projects": {
-    "C:\\School\\Projecten\\Opdracht-Week-3\\Opdracht-Week-3.csproj": {
+    "D:\\School\\Visual Studio Code\\Opdracht-Week-3\\Opdracht-Week-3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\School\\Projecten\\Opdracht-Week-3\\Opdracht-Week-3.csproj",
+        "projectUniqueName": "D:\\School\\Visual Studio Code\\Opdracht-Week-3\\Opdracht-Week-3.csproj",
         "projectName": "Opdracht-Week-3",
-        "projectPath": "C:\\School\\Projecten\\Opdracht-Week-3\\Opdracht-Week-3.csproj",
+        "projectPath": "D:\\School\\Visual Studio Code\\Opdracht-Week-3\\Opdracht-Week-3.csproj",
         "packagesPath": "C:\\Users\\Lucas Clavel\\.nuget\\packages\\",
-        "outputPath": "C:\\School\\Projecten\\Opdracht-Week-3\\obj\\",
+        "outputPath": "D:\\School\\Visual Studio Code\\Opdracht-Week-3\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas Clavel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lucas Clavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

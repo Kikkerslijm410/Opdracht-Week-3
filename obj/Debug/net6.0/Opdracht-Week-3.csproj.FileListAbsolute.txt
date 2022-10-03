@@ -13,3 +13,18 @@ C:\School\Projecten\Opdracht-Week-3\obj\Debug\net6.0\refint\Opdracht-Week-3.dll
 C:\School\Projecten\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.pdb
 C:\School\Projecten\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.genruntimeconfig.cache
 C:\School\Projecten\Opdracht-Week-3\obj\Debug\net6.0\ref\Opdracht-Week-3.dll
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.csproj.AssemblyReference.cache
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.GeneratedMSBuildEditorConfig.editorconfig
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.AssemblyInfoInputs.cache
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.AssemblyInfo.cs
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.csproj.CoreCompileInputs.cache
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.dll
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\refint\Opdracht-Week-3.dll
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.pdb
+D:\School\Visual Studio Code\Opdracht-Week-3\bin\Debug\net6.0\Opdracht-Week-3.exe
+D:\School\Visual Studio Code\Opdracht-Week-3\bin\Debug\net6.0\Opdracht-Week-3.deps.json
+D:\School\Visual Studio Code\Opdracht-Week-3\bin\Debug\net6.0\Opdracht-Week-3.runtimeconfig.json
+D:\School\Visual Studio Code\Opdracht-Week-3\bin\Debug\net6.0\Opdracht-Week-3.dll
+D:\School\Visual Studio Code\Opdracht-Week-3\bin\Debug\net6.0\Opdracht-Week-3.pdb
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\Opdracht-Week-3.genruntimeconfig.cache
+D:\School\Visual Studio Code\Opdracht-Week-3\obj\Debug\net6.0\ref\Opdracht-Week-3.dll
