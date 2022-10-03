@@ -6,8 +6,8 @@ namespace AsyncBoekOpdracht
 {
     class Boek
     {
-        public string Titel { get; set; }
-        public string Auteur { get; set; }
+        public string? Titel { get; set; }
+        public string? Auteur { get; set; }
         public float AIScore {
             get {
                 // Deze 'berekening' is eigenlijk een ingewikkeld AI algoritme.
@@ -48,7 +48,7 @@ namespace AsyncBoekOpdracht
     }
     class Program
     {
-        static void VoegBoekToe() {
+        static async Task VoegBoekToe() {
             Console.WriteLine("Geef de titel op: ");
             var titel = Console.ReadLine();
             Console.WriteLine("Geef de auteur op: ");
@@ -56,15 +56,15 @@ namespace AsyncBoekOpdracht
             Database.VoegToe(new Boek {Titel = titel, Auteur = auteur});
             Database.Logboek("Er is een nieuw boek!");
             Console.WriteLine("De huidige lijst met boeken is: ");
-            foreach (var boek in Database.HaalLijstOp()) {
+            foreach (var boek in await Database.HaalLijstOp()) {
                 Console.WriteLine(boek.Titel);
             }
         }
-        static void ZoekBoek() {
+        static async Task ZoekBoek() {
             Console.WriteLine("Waar gaat het boek over?");
             var beschrijving = Console.ReadLine();
-            Boek beste = null;
-            foreach (var boek in Database.HaalLijstOp())
+            Boek? beste = null;
+            foreach (var boek in await Database.HaalLijstOp())
                 if (beste == null || boek.AIScore > beste.AIScore)
                     beste = boek;
             Console.WriteLine("Het boek dat het beste overeenkomt met de beschrijving is: ");
@@ -80,22 +80,22 @@ namespace AsyncBoekOpdracht
             await Willekeurig.Vertraging(2000, 3000);
             Backupping = false;
         }
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
             Console.WriteLine("Welkom bij de boeken administratie!");
-            string key = null;
-            while (key != "q") {
-                Console.WriteLine("+) Boek toevoegen");
-                Console.WriteLine("z) Boek zoeken");
-                Console.WriteLine("b) Backup maken van de boeken");
-                Console.WriteLine("q) Quit");
+            string? key = null;
+            while (key != "D") {
+                Console.WriteLine("A) Boek toevoegen");
+                Console.WriteLine("B) Boek zoeken");
+                Console.WriteLine("C) Backup maken van de boeken");
+                Console.WriteLine("D) Quit");
                 key = Console.ReadLine();
-                if (key == "+")
-                    VoegBoekToe();
-                else if (key == "z")
-                    ZoekBoek();
-                else if (key == "b")
-                    await Backup();
+                if (key == "A")
+                    await VoegBoekToe();
+                else if (key == "B")
+                    await ZoekBoek();
+                else if (key == "C")
+                    Backup();
                 else Console.WriteLine("Ongeldige invoer!");
             }
         }
