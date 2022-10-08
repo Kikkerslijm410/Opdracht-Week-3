@@ -8,18 +8,30 @@ namespace AsyncBoekOpdracht
     {
         public string? Titel { get; set; }
         public string? Auteur { get; set; }
-        public float AIScore {
-            get {
-                // Deze 'berekening' is eigenlijk een ingewikkeld AI algoritme.
-                // Pas de volgende vier regels niet aan.
+
+        // public float AIScore {
+        //     get {
+        //         double ret = 1.0f;
+        //         for (int i = 0; i < 10000000; i++)
+        //             for (int j = 0; j < 10; j++)
+        //                 ret = (ret + Willekeurig.Random.NextDouble()) % 1.0;
+        //         return (float)ret;
+        //     }
+        // }
+
+        public async Task<Tuple<float,Boek>> AIScore(){
+            Task<Tuple<float,Boek>> calculate = Task.Run(() =>{
                 double ret = 1.0f;
                 for (int i = 0; i < 10000000; i++)
                     for (int j = 0; j < 10; j++)
                         ret = (ret + Willekeurig.Random.NextDouble()) % 1.0;
-                return (float)ret;
-            }
+                return Tuple.Create((float)ret, this);
+            });
+            Tuple<float,Boek> result = await calculate;
+            return result;     
         }
     }
+
     static class Willekeurig
     {
         public static Random Random = new Random();
@@ -65,15 +77,29 @@ namespace AsyncBoekOpdracht
             Console.WriteLine("Waar gaat het boek over?");
             var beschrijving = Console.ReadLine();
             Boek? beste = null;
-            foreach (var boek in await Database.HaalLijstOp())
-                if (beste == null || boek.AIScore > beste.AIScore)
-                    beste = boek;
-            Console.WriteLine("Het boek dat het beste overeenkomt met de beschrijving is: ");
-            Console.WriteLine(beste!.Titel);
+            float AIScore = new float();
+
+            var TaskManager = new List<Task<Tuple<float,Boek>>>();
+
+            foreach (var boek in (await Database.HaalLijstOp()).ToList()){
+                TaskManager.Add(boek.AIScore());
+            }
+            foreach(var task in await(Task.WhenAll(TaskManager))){
+                if (task.Item1 > AIScore)
+                    AIScore = task.Item1;
+                    beste = task.Item2;
+            }
+            if(beste != null){
+                Console.WriteLine("De beste overeenkomst is: ");
+                Console.WriteLine(beste.Titel);
+                await Task.Delay(10000);
+            }
+            else{
+                Console.WriteLine("Geen overeenkomst gevonden.");
+                await Task.Delay(3000);
+            }      
         }
         static bool Backupping = false;
-        // "Backup" kan lang duren. We willen dat de gebruiker niet hoeft te wachten,
-        // en direct daarna boeken kan toevoegen en zoeken.
         static async Task Backup() {
             if (Backupping)
                 return;
