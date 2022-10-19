@@ -9,16 +9,28 @@ namespace AsyncBoekOpdracht
         public string? Titel { get; set; }
         public string? Auteur { get; set; }
 
-        // public float AIScore {
-        //     get {
-        //         double ret = 1.0f;
-        //         for (int i = 0; i < 10000000; i++)
-        //             for (int j = 0; j < 10; j++)
-        //                 ret = (ret + Willekeurig.Random.NextDouble()) % 1.0;
-        //         return (float)ret;
-        //     }
-        // }
+        /*
+        wordt niet meer gebruikt omdat we nu async werken
+        public float AIScore {
+            get {
+                double ret = 1.0f;
+                for (int i = 0; i < 10000000; i++)
+                    for (int j = 0; j < 10; j++)
+                        ret = (ret + Willekeurig.Random.NextDouble()) % 1.0;
+                return (float)ret;
+            }
+         }
+        */
 
+        /* 
+        async versie van AIScore
+        Tuple is een struct die 2 waarden kan bevatten,
+        dus kan hij in dit geval de score en het boek bevatten.
+        Wat ervoor zorgt dat we niet 2 lijsten hoeven te maken
+        en dat we de score en het boek kunnen opslaan in 1 lijst
+        en dat we dus niet hoeven te zoeken naar de bijbehorende score
+        bij het boek.
+        */
         public async Task<Tuple<float,Boek>> AIScore(){
             Task<Tuple<float,Boek>> calculate = Task.Run(() =>{
                 double ret = 1.0f;
