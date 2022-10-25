@@ -73,6 +73,7 @@ namespace AsyncBoekOpdracht
     class Program
     {
         static async Task VoegBoekToe() {
+            int i = 1;
             Console.WriteLine("Geef de titel op: ");
             var titel = Console.ReadLine();
             Console.WriteLine("Geef de auteur op: ");
@@ -82,7 +83,8 @@ namespace AsyncBoekOpdracht
             Database.Logboek("Er is een nieuw boek!");
             Console.WriteLine("De huidige lijst met boeken is: ");
             foreach (var boek in await Database.HaalLijstOp()) {
-                Console.WriteLine(boek.Titel);
+                Console.WriteLine(i + ") " + boek.Titel);
+                i++;
             }
         }
         static async Task ZoekBoek() {
@@ -122,8 +124,14 @@ namespace AsyncBoekOpdracht
         }
         static async Task Main(string[] args)
         {
+            Database.VoegToe(new Boek {Titel = "De Hobbit", Auteur = "J.R.R. Tolkien"});
+            Database.VoegToe(new Boek {Titel = "De Grote Gatsby", Auteur = "F. Scott Fitzgerald"});
+            Database.VoegToe(new Boek {Titel = "De Kleine Prins", Auteur = "Antoine de Saint-Exupéry"});
+            Database.VoegToe(new Boek {Titel = "De Schaduw van de Wind", Auteur = "Carlos Ruiz Zafón"});
+            Database.VoegToe(new Boek {Titel = "De Gelaarsde Kat", Auteur = "Antoine de Saint-Exupéry"});
+
             string? key = null;
-            while (key != "D") {
+            while (key != "D" && key != "d") {
                 Console.WriteLine("Welkom bij de boeken administratie!");
                 Console.WriteLine("A) Boek toevoegen");
                 Console.WriteLine("B) Boek zoeken");
@@ -131,11 +139,11 @@ namespace AsyncBoekOpdracht
                 Console.WriteLine("D) Quit");
                 key = Console.ReadLine();
                 Console.Clear();
-                if (key == "A")
+                if (key == "A" || key == "a")
                     await VoegBoekToe();
-                else if (key == "B")
+                else if (key == "B" || key == "b")
                     await ZoekBoek();
-                else if (key == "C")
+                else if (key == "C" || key == "c")
                     Backup();
                 else Console.WriteLine("Ongeldige invoer!");
             }
